@@ -1,38 +1,110 @@
-.App {
-  text-align: center;
+:root{
+  --light-mode-elements: #fff;
+  --light-mode-bg: hsl(0, 0%, 98%);
+  --dark-mode-elements: hsl(209, 23%, 22%);
+  --dark-mode-bg: hsl(207, 26%, 17%)
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app{
+   background-color: var(--light-mode-bg);
+   min-height: 100vh;
+   height: 100%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app-body{
+  margin: 15px auto 0;
+  padding: 15px;
+  max-width: 1400px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header{
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+}
+.header-container{
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.switch-node{
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 15px;
+  cursor: pointer;
+  user-select: none;
 }
-
-.App-link {
-  color: #61dafb;
+.inputs{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search-input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+  width: 300px;
+  padding: 5px;
+  border-radius: 5px;
+  gap: 5px;
+}
+.search-input input{
+  border: 0;
+  background-color: transparent;
+  outline: none;
+  font-size: 18px;
+}
+.select-region{
+  width: 300px;
+  background-color: white;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+  padding: 5px;
+  border-radius: 5px;
+}
+.select-region select{
+  padding: 5px;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.countries{
+  max-width: 1400px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 35px;
+}
+.country{
+  background-color: white;
+  width: 305px;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  height: 370px;
+  cursor: pointer;
+}
+.country .flag-container {
+  height: 170PX;
+  width: 100%;
+}
+.country .flag-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.country .name {
+  margin-bottom: 10px;
+}
+.country .values{
+  color: gray;
+}
+.country .details{
+  padding: 15px;
+}
+.country .details p {
+  margin-bottom: 5px;
 }
