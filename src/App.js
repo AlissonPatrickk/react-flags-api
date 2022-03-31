@@ -5,7 +5,7 @@ import CountryDetail from './Components/CountryDetails'
 import SearchIcon from '@mui/icons-material/Search';
 import { useState, useEffect, useRef } from 'react';
 import { Routes, Route } from 'react-router-dom'
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -19,9 +19,9 @@ function App() {
     setDarkMode((prevState) => !prevState);
   };
   useEffect(() => {
-    try{
+    try {
       fetchData();
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
   }, []);
@@ -29,7 +29,7 @@ function App() {
   const fetchData = async () => {
     const response = await fetch("https://restcountries.com/v2/all");
     const data = await response.json();
-    
+
     if (data.status === 404) {
       setCountries([]);
       return
@@ -50,23 +50,23 @@ function App() {
       } catch (error) {
         console.log(error)
       }
-    }else {
+    } else {
       fetchData();
     }
   };
 
   const selectRegion = () => {
     const selectValue = regionRef.current.value;
-    
-    if(selectValue.trim()) {
+
+    if (selectValue.trim()) {
       const fetchSelect = async () => {
         const response = await fetch(`https://restcountries.com/v2/region/${selectValue}`);
         const data = await response.json();
 
-        if(selectValue === "All") {
+        if (selectValue === "All") {
           try {
             fetchData()
-          }catch (error) {
+          } catch (error) {
             console.log(error)
           }
           return;
@@ -75,7 +75,7 @@ function App() {
       };
       try {
         fetchSelect();
-      }catch(error) {
+      } catch (error) {
         console.log(error);
       }
     }
@@ -111,28 +111,29 @@ function App() {
             <div className="countries">
               {!noCountries ? (
                 countries.map((country) => (
-                  <Country 
-                  darkMode={darkMode}
-                  key={country.alpha3Code}
-                  code={country.alpha3Code}
-                  name={country.name}
-                  capital={country.capital}
-                  population={country.population}
-                  region={country.region}
-                  flag={country.flag}
-                  showDetails={showDetails}
+                  <Country
+                    darkMode={darkMode}
+                    key={country.alpha3Code}
+                    code={country.alpha3Code}
+                    name={country.name}
+                    capital={country.capital}
+                    population={country.population}
+                    region={country.region}
+                    flag={country.flag}
+                    topLevelDomain={country.topLevelDomain}
+                    showDetails={showDetails}
                   />
                 ))
-                
+
               ) : (
                 <p> No countries found </p>
-              )}  
+              )}
             </div>
           </div>
         }
         />
-        <Route path="/:countryCode" 
-        element={<CountryDetail darkMode={darkMode} countries={countries}/>} 
+        <Route path="/:countryCode"
+          element={<CountryDetail darkMode={darkMode} countries={countries} />}
         />
 
       </Routes>
